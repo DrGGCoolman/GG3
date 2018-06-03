@@ -39,6 +39,7 @@ export class UserDetail extends Component {
     render() {
         return (
             <div>
+                <h1>HALajsdfhsdfajksfOOOOOOO</h1>
                 <Button incrementValue={1} onClickFunction={this.incrementCounter} />
                 <Button incrementValue={10} onClickFunction={this.incrementCounter} />
                 <Button incrementValue={50} onClickFunction={this.incrementCounter} />
