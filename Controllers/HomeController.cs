@@ -4,32 +4,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 
-namespace NamespaceName
+namespace aspnetAndReact.Controllers
 {
     [Route("api/[controller]")]
     public class HomeController : Controller
     {
-       [HttpGet]
-       public IActionResult Get()
-       {
-         try
-         {
-           
-           return Ok();
-         }
-         catch (Exception)
-         {
-           return BadRequest();
-         }
-       }
+        [HttpGet("[action]")]
         public JsonResult GetGoals()
         {
-            return new JsonResult(new List<object>()
-            {
-              new {id=1, Name = "First Goal"},
-              new  {id=2, Name="Second Goal"}
-});
+            return new JsonResult(GoalsMockData.Current.Goals);
         }
+        
         public IActionResult Index()
         {
             try
