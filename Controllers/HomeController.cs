@@ -10,32 +10,6 @@ namespace aspnetAndReact.Controllers
     public class HomeController : Controller
     {
 
-        [HttpGet("[action]")]
-        public IActionResult GetGoals()
-        {
-            try
-            {
-                return new JsonResult(GoalsMockData.Current.Goals);
-            }
-            catch (Exception)
-            {
-                return BadRequest();
-            }
-        }
-        [HttpGet("[action]/{id}")]
-        public IActionResult GetGoal(int id)
-        {
-            try
-            {
-                return new JsonResult(GoalsMockData.Current.Goals[id]);
-            }
-            catch (Exception)
-            {
-                return BadRequest();
-            }
-        }
-
-
         public IActionResult Index()
         {
             try

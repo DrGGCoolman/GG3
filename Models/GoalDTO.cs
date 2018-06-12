@@ -13,5 +13,6 @@ namespace aspnetAndReact.Models
         public string Desc { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime? DateAchieved { get; set; }
+        public List<PostDTO> Posts { get; set; }
     }
 }

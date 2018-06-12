@@ -17,7 +17,21 @@ namespace aspnetAndReact
                 {
                     ID = 1,
                     Title = "-5kg in 6 weeks",
-                    Desc = "losing losing 5kg in 6 weeks, and keeping it low",
+                    Desc = " losing 5kg in 6 weeks, and keeping it low",
+                    Posts = new List<PostDTO>{
+                        new PostDTO{
+                            ID = 1,
+                            Header= "My First Steps",
+                            PictureID= null,
+                            GoaldID = 1,
+                            Content = "i was jogging today",
+                            DateCreated = DateTime.Now,
+
+
+
+                        },
+
+                    },
                     DateCreated = DateTime.Now
 
 
@@ -27,8 +41,21 @@ namespace aspnetAndReact
                     ID = 2,
                     Title = "freemind",
                     Desc = "freeing my mind by daily meditation",
-                    DateCreated = DateTime.Now
+                    DateCreated = DateTime.Now,
+                       Posts = new List<PostDTO>{
+                        new PostDTO{
+                            ID = 3,
+                            Header= "Inner Peace",
+                            PictureID= null,
+                            GoaldID = 2,
+                            Content = "i was meditating today",
+                            DateCreated = DateTime.Now,
 
+
+
+                        },
+
+                       }
 
                 },
                 new GoalDTO
