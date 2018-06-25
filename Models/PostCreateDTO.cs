@@ -1,0 +1,21 @@
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace aspnetAndReact.Models
+{
+    public class PostCreateDTO   
+    {
+      
+        public int GoaldID { get; set; }    
+        public string Header { get; set; }
+        public string Content { get; set; }
+        
+        //DRGG: To be replaced by binary or reference type
+        public List<int?> PictureID { get; set; }
+        public DateTime DateCreated { get; set; }
+        
+    }
+}

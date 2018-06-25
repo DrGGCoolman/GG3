@@ -63,7 +63,21 @@ namespace aspnetAndReact
                     ID = 3,
                     Title = "restore bmw E36",
                     Desc = "completly overhaul my E36",
-                    DateCreated = DateTime.Now
+                    DateCreated = DateTime.Now,
+                       Posts = new List<PostDTO>{
+                        new PostDTO{
+                            ID = 2,
+                            Header= "Inner Peace",
+                            PictureID= null,
+                            GoaldID = 3,
+                            Content = "i was meditating today",
+                            DateCreated = DateTime.Now,
+
+
+
+                        },
+
+                       }
 
 
                 }

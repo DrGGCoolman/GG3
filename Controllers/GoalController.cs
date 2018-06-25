@@ -44,46 +44,6 @@ namespace aspnetAndReact.Controllers
             }
         }
 
-        //     [HttpPost]
-        //     public IActionResult Post([FromBody] GoalDTO model)
-        //     {
-        //       try
-        //       {
-        //         return Created("", null);
-        //       }
-        //       catch (Exception)
-        //       {
-        //         _logger.LogError("Failed to execute POST");
-        //         return BadRequest();
-        //       }
-        //     }
 
-        //     [HttpPut]
-        //     public IActionResult Put([FromBody] GoalDTO model)
-        //     {
-        //       try
-        //       {
-        //         return Ok();
-        //       }
-        //       catch (Exception)
-        //       {
-        //         _logger.LogError("Failed to execute PUT");
-        //         return BadRequest();
-        //       }
-        //     }
-
-        //     [HttpDelete]
-        //     public IActionResult Delete(int id)
-        //     {
-        //       try
-        //       {
-        //         return Ok();
-        //       }
-        //       catch (Exception)
-        //       {
-        //         _logger.LogError("Failed to execute DELETE");
-        //         return BadRequest();
-        //       }
-        //     }
     }
 }
