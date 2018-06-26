@@ -41,10 +41,10 @@ namespace aspnetAndReact
             try
             {
                 var goal = GoalsMockData.Current.Goals.First(g => g.ID == goalId);
-                 
+
 
                 var postToReturn = goal.Posts.First(p => p.ID == postId);
-                
+
                 return Ok(postToReturn);
             }
             catch (Exception)
@@ -163,11 +163,24 @@ namespace aspnetAndReact
         }
 
         [HttpDelete("{goalId}/[action]/{postId}")]
-        public IActionResult Delete(int pId)
+        public IActionResult Delete(int goalId, int postId)
         {
             try
             {
-                return Ok();
+                var goal = GoalsMockData.Current.Goals.FirstOrDefault(g => g.ID == goalId);
+                if (goal == null)
+                {
+                    return NotFound();
+                }
+                var postToRemove = goal.Posts.FirstOrDefault(p => p.ID == postId);
+                if (postToRemove == null)
+                {
+                    return NotFound();
+                }
+
+                goal.Posts.Remove(postToRemove);
+
+                return NoContent();
             }
             catch (Exception)
             {
