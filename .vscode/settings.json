@@ -1,5 +1,14 @@
 {
     "workbench.colorCustomizations": {
-        "activityBar.foreground": "#fffb00"
-    }
+        "activityBar.foreground": "#d7f747",
+        "activityBar.background": "#413a58"
+    },
+    "mssql.connections": [
+        {
+            "server": "{{put-server-name-here}}",
+            "database": "{{put-database-name-here}}",
+            "user": "{{put-username-here}}",
+            "password": "{{put-password-here}}"
+        }
+    ]
 }

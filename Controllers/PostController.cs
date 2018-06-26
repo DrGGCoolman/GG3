@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Mvc.Formatters.Json;
 using aspnetAndReact.Models;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace aspnetAndReact
 {
@@ -34,18 +35,21 @@ namespace aspnetAndReact
             }
         }
 
-        [HttpGet("[action]/{id}")]
-        public IActionResult GetPost(int ID)
+        [HttpGet("{goalId}/[action]/{postId}")]
+        public IActionResult GetPost(int goalId, int postId)
         {
             try
             {
-                var postToReturn = GoalsMockData.Current.Goals.SelectMany(g => g.Posts).FirstOrDefault(p => p.ID == ID);
-                if (postToReturn == null) return NotFound("Post not Found");
+                var goal = GoalsMockData.Current.Goals.First(g => g.ID == goalId);
+                 
+
+                var postToReturn = goal.Posts.First(p => p.ID == postId);
+                
                 return Ok(postToReturn);
             }
             catch (Exception)
             {
-                return BadRequest();
+                return NotFound();
             }
         }
 
@@ -76,10 +80,12 @@ namespace aspnetAndReact
 
 
                 };
+
                 goal.Posts.Add(PostToCreate);
 
                 return Created("GetPost"
                , PostToCreate);
+
             }
             catch (Exception)
             {
@@ -88,11 +94,65 @@ namespace aspnetAndReact
             }
         }
 
-        [HttpPut]
-        public IActionResult Put([FromBody] PostCreateDTO model)
+        [HttpPatch("{goalId}/[action]/{postId}")]
+        public IActionResult PatchPost(int goalId, int postId, [FromBody] JsonPatchDocument<PostCreateDTO> patchDoc)
+        {
+            if (patchDoc == null)
+            {
+                return BadRequest();
+            }
+
+            var goal = GoalsMockData.Current.Goals.FirstOrDefault(g => g.ID == goalId);
+            if (goal == null)
+            {
+                return NotFound();
+            }
+
+            var post = goal.Posts.FirstOrDefault(p => p.ID == postId);
+            if (post == null)
+            {
+                return NotFound();
+            }
+
+
+            var postToPatch = new PostCreateDTO()
+            {
+                Header = post.Header,
+                Content = post.Content,
+                PictureID = post.PictureID
+            };
+            patchDoc.ApplyTo(postToPatch, ModelState);
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            post.Header = postToPatch.Header;
+            post.Content = postToPatch.Content;
+            post.PictureID = postToPatch.PictureID;
+
+            return NoContent();
+
+
+
+        }
+
+
+
+
+        [HttpPut("{goalId}/[action]/{postId}")]
+        public IActionResult PutPost(int goalId, int postId, [FromBody] PostCreateDTO model)
         {
             try
             {
+                var postToEdit = GoalsMockData.Current.Goals.SelectMany(g => g.Posts).FirstOrDefault(p => p.ID == postId);
+
+                postToEdit.Header = model.Header;
+                postToEdit.Content = model.Content;
+                postToEdit.PictureID = model.PictureID;
+
+                var goal = GoalsMockData.Current.Goals.FirstOrDefault(g => g.ID == goalId);
                 return Ok();
             }
             catch (Exception)
@@ -102,7 +162,7 @@ namespace aspnetAndReact
             }
         }
 
-        [HttpDelete]
+        [HttpDelete("{goalId}/[action]/{postId}")]
         public IActionResult Delete(int pId)
         {
             try
