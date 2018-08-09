@@ -15,9 +15,31 @@ export class Hot extends Component {
             });
     }
 
-    static renderForecastsTable(goals) {
+    static renderGoals(goals) {
         return (
-            <div><p>{JSON.stringify(this.goals)}</p></div>
+            <div>
+
+
+
+                <table className='table'>
+                    <thead>
+                        <tr>
+                            <th>Goal Name:</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {goals.map(goals =>
+                            <tr key={goals.DateCreated}>
+                                <td>{goals.Title}</td>
+                                <td>{goals.DateCreated}</td>
+                                <td>{goals.Desc}</td>
+
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
+            </div >
+
         );
 
     }
@@ -25,12 +47,11 @@ export class Hot extends Component {
     render() {
         let contents = this.state.loading
             ? <p><em>Loading...</em></p>
-            : Hot.renderForecastsTable(this.state.goals);
+            : Hot.renderGoals(this.state.goals);
 
         return (
             <div>
-                <h1>Weather forecast</h1>
-                <p>This component demonstrates fetching data from the server.</p>
+                <h1>Hot Goals</h1>
                 {contents}
             </div>
         );
