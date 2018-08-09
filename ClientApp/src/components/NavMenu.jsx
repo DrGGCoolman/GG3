@@ -38,6 +38,11 @@ export class NavMenu extends Component {
                 <Glyphicon glyph='trash' /> UserDetail
               </NavItem>
             </LinkContainer>
+            <LinkContainer to={'/hot'}>
+              <NavItem>
+                <Glyphicon glyph='fire' /> HOT
+              </NavItem>
+            </LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
