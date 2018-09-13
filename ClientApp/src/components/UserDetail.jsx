@@ -1,54 +1,13 @@
 import React, { Component } from 'react';
 import { render } from "react-dom";
 
-
-
-
-class Button extends React.Component {
-    render() {
-        return (
-            <button
-                onClick={() => this.props.onClickFunction(this.props.incrementValue)}
-            >
-                +{this.props.incrementValue}
-            </button>
-        );
-    }
-}
-
-const Result = (props) => {
-    return (
-        <div>{props.counter}</div>
-    );
-};
-
-class App extends React.Component {
-
-}
 export class UserDetail extends Component {
-    state = { counter: 0 };
-
-    incrementCounter = (incrementValue) => {
-        {
-            this.setState((prevState) => ({
-                counter: prevState.counter + incrementValue
-            }));
-        };
-    };
 
     render() {
-        return (
-            <div>
-                <h1>HALajsdfhsdfajksfOOOOOOO</h1>
-                <Button incrementValue={1} onClickFunction={this.incrementCounter} />
-                <Button incrementValue={10} onClickFunction={this.incrementCounter} />
-                <Button incrementValue={50} onClickFunction={this.incrementCounter} />
-                <Button incrementValue={100} onClickFunction={this.incrementCounter} />
-
-                <Result counter={this.state.counter} />
-            </div>
-        );
-
-    }
-
+        return <dir>
+            <h2>User Details</h2><form action="get|post">
+                <label htmlFor="1">User Name:</label>
+                <input type="text" name="Username" id="1" />
+            </form></dir>
+    };
 }

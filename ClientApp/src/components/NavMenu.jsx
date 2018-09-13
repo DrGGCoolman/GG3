@@ -35,7 +35,7 @@ export class NavMenu extends Component {
             </LinkContainer> */}
             <LinkContainer to={'/userdetail'}>
               <NavItem>
-                <Glyphicon glyph='trash' /> UserDetail
+                <Glyphicon glyph='trash' /> User Details
               </NavItem>
             </LinkContainer>
             <LinkContainer to={'/hot'}>
