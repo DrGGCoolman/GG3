@@ -6,20 +6,27 @@ export class Home extends Component {
   render() {
     return (
       <div>
-        <h1>Hello, world!</h1>
-        <p>Welcome to your new single-page application, built with:</p>
-        <ul>
-          <li><a href='https://get.asp.net/'>ASP.NET Core</a> and <a href='https://msdn.microsoft.com/en-us/library/67ef8sbd.aspx'>C#</a> for cross-platform server-side code</li>
-          <li><a href='https://facebook.github.io/react/'>React</a> for client-side code</li>
-          <li><a href='http://getbootstrap.com/'>Bootstrap</a> for layout and styling</li>
-        </ul>
-        <p>To help you get started, we've also set up:</p>
-        <ul>
-          <li><strong>Client-side navigation</strong>. For example, click <em>Counter</em> then <em>Back</em> to return here.</li>
-          <li><strong>Development server integration</strong>. In development mode, the development server from <code>create-react-app</code> runs in the background automatically, so your client-side resources are dynamically built on demand and the page refreshes when you modify any file.</li>
-          <li><strong>Efficient production builds</strong>. In production mode, development-time features are disabled, and your <code>dotnet publish</code> configuration produces minified, efficiently bundled JavaScript files.</li>
-        </ul>
-        <p>The <code>ClientApp</code> subdirectory is a standard React application based on the <code>create-react-app</code> template. If you open a command prompt in that directory, you can run <code>npm</code> commands such as <code>npm test</code> or <code>npm install</code>.</p>
+        <h2>GG</h2>
+        <h3>
+          Basic Idea:
+        </h3>
+        <p>
+          A social Platform,
+          That lets its users set goals for themselves in form of a post.
+           Other users subscribe to goals by investing reputation points. If the 
+           Goal setter achieves its goal, subscribed ( and set their bets on
+            goal achieved ) users are rewarded with reputation. Also the User achieving the
+             goal gets reputation depending on the amount of subscription to his post ( multiplied
+              by bet leverage (1 + bet not achived / bet achieved)).
+
+        </p><p>
+
+          After successfully achieving your goal ( the way to achievement has to be documented
+          ) a manual is generated out of your post. When users have similar goal they can use
+           this manual as guideline or motivation to achieve their goals and you can get reputation 
+           for this manuals if many users find them interesting or helpful.
+        </p>
+
       </div>
     );
   }

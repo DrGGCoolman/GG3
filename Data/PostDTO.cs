@@ -5,13 +5,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
-namespace aspnetAndReact.Models
+namespace aspnetAndReact.Data
 {
     public class PostCreateDTO
     {
-       
-        public int GoaldID { get; set; }
-        [Required]
+
+        public int Id { get; set; }
+
         [MaxLength(50)]
         public string Header { get; set; }
         [Required]
