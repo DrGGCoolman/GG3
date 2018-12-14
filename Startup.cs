@@ -7,21 +7,40 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
+using aspnetAndReact.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace aspnetAndReact
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public IHostingEnvironment Environment { get; }
+        public IConfiguration Configuration { get; }
+
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             Configuration = configuration;
+            Environment = env;
         }
 
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            if (Environment.IsDevelopment())
+            {
+                // services.AddDbContext<DataContext>(opt => opt.UseInMemoryDatabase("Data"));
+                services.AddDbContext<GGContext>(options =>
+                {
+                    options.UseSqlite(Configuration.GetConnectionString("cnx"));
+                });
+            }
+            else
+            {
+                services.AddDbContext<GGContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("cnx")));
+
+            }
             services.AddMvc()
             .AddMvcOptions(o =>
             {
@@ -50,10 +69,10 @@ namespace aspnetAndReact
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
 
-            if (env.IsDevelopment())
+            if (Environment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
@@ -79,7 +98,7 @@ namespace aspnetAndReact
             {
                 spa.Options.SourcePath = "ClientApp";
 
-                if (env.IsDevelopment())
+                if (Environment.IsDevelopment())
                 {
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }

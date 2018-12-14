@@ -32,7 +32,7 @@ namespace Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] UserDTO model)
+        public IActionResult Post([FromBody] User model)
         {
             try
             {
@@ -46,7 +46,7 @@ namespace Controllers
         }
 
         [HttpPut]
-        public IActionResult Put([FromBody] UserDTO model)
+        public IActionResult Put([FromBody] User model)
         {
             try
             {

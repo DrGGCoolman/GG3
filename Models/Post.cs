@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace aspnetAndReact.Models
 {
-    public class PostCreateDTO
+    public class Post
     {
 
         public int Id { get; set; }

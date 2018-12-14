@@ -2,7 +2,12 @@ using System;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore;
 using aspnetAndReact.Models;
+using aspnetAndReact.Data;
+using Newtonsoft.Json;
+
+using Microsoft.EntityFrameworkCore;
 
 namespace aspnetAndReact.Controllers
 {
@@ -10,13 +15,16 @@ namespace aspnetAndReact.Controllers
     [Route("api/[controller]")]
     public class GoalController : Controller
     {
+        private readonly ILogger<GoalController> _logger;
+        private readonly GGContext _ggContext;
 
 
-        ILogger<GoalController> _logger;
 
-        public GoalController(ILogger<GoalController> logger)
+
+        public GoalController(ILogger<GoalController> logger, GGContext ggContext)
         {
             _logger = logger;
+            _ggContext = ggContext;
         }
 
         [HttpGet("[action]")]
@@ -24,7 +32,7 @@ namespace aspnetAndReact.Controllers
         {
             try
             {
-                return Ok(GoalsMockData.Current.Goals);
+                return Ok(JsonConvert.SerializeObject(_ggContext.Goals));
             }
             catch (Exception e)
             {
@@ -36,7 +44,7 @@ namespace aspnetAndReact.Controllers
         {
             try
             {
-                return Ok(GoalsMockData.Current.Goals.FirstOrDefault(x => x.ID == id));
+                return Ok();
             }
             catch (Exception)
             {

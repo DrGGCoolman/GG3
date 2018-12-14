@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace aspnetAndReact.Data
 {
-    public class PostCreateDTO
+    public class PostDTO
     {
 
         public int Id { get; set; }
@@ -17,10 +17,6 @@ namespace aspnetAndReact.Data
         [Required]
         [MaxLength(200)]
         public string Content { get; set; }
-
-        //DRGG: To be replaced by binary or reference type
-        public List<int?> PictureID { get; set; }
-        [Required]
         public DateTime DateCreated { get; set; }
 
     }
